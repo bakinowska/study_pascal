@@ -1,0 +1,77 @@
+program sortowanie;
+
+const max = 20;
+var
+koniec : boolean;
+p1, p2 : integer;
+tymczasowa : integer;
+Liczby : Array [1..max] of integer;
+wartosc : integer;
+i : integer;
+
+procedure pokaz_tablice;
+        begin
+        for i := 1 to max do
+                begin
+                if i > 1 then write (', ');
+                write (liczby[i]);
+                end;
+        end;
+
+
+begin
+{wypenienie tablicy liczbami}
+randomize;
+
+for i := 1 to max do
+        begin
+        wartosc := Random(100);
+        Liczby[i] := wartosc;
+        end;
+
+writeln;
+writeln ('wylosowane liczby z zakresu 0-99:');
+pokaz_tablice;
+writeln;
+writeln ('zaczynamy sortowanie');
+writeln;
+
+{zaczynamy sortowanie}
+p1 := max-1;
+repeat
+        koniec := true;
+        for p2 := 1 to p1 do
+        begin
+        if Liczby[p2] > Liczby[p2+1] then
+                begin
+                tymczasowa := Liczby[p2];
+                Liczby[p2] := Liczby[p2+1];
+                Liczby[p2+1] := tymczasowa;
+                koniec := false;
+                end;
+        end;
+p1 := p1-1;
+pokaz_tablice;
+writeln;
+until (koniec = true) or (p1<1);
+
+writeln;
+writeln('liczby po sortowaniu :');
+pokaz_tablice;
+
+writeln;
+readln;
+end.
+
+
+
+
+
+
+
+
+
+
+
+
+
